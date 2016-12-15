@@ -6,4 +6,5 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
   [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+unset CODESIGN_ALLOCATE
 DYLD_INSERT_LIBRARIES="${DIR}/codesign_fix.dylib" /usr/bin/codesign_old "${@:1}"
